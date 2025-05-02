@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap');
+
+body {
+    background-image: url("images1.jfif");
+}
+
+.navbar {
+    background-color: #CEE1F2;
+    box-shadow: 1px 1px 2px #333333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    padding: 10px;
+}
+
+.title {
+    position: relative;
+    left: auto;
+    transform: none;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: xx-large;
+    font-family: 'Cinzel', serif;
+    color: #717DAB;
+    white-space: nowrap;
+}
+
+.button-links {
+    display: flex;
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;
+    height: 100%;
+}
+
+.mode_select, .log-out-button {
+    border: 2px solid #91C9BE;
+    height: 100%;
+    width: 150px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: larger;
+    color: white;
+    background-color: #91C9BE;
+    text-decoration: none;
+}
+
+.mode_select:hover, .log-out-button:hover {
+    background-color: white;
+    color: #91C9BE;
+    cursor: pointer;
+}
+
+.search-button, .reset-button, .back-button {
+    border: 2px solid #AFC7CB;
+    height: 100%;
+    width: 150px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: larger;
+    color: white;
+    background-color: #AFC7CB;
+    text-decoration: none;
+}
+
+.search-button:hover, .reset-button:hover, .back-button:hover {
+    background-color: white;
+    color: #AFC7CB;
+    cursor: pointer;
+}
+
+.portfolio-overview-div {
+    margin: 0 auto;
+    margin-top: 60px;
+    height: 120px;
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.portfolio-list-div {
+    margin: 0 auto;
+    margin-top: 15px;
+    height: 500px;
+    /* width: 80%; */
+}
+
+.portfolio-overview-div > div {
+    flex: 1; 
+    height: 100%;
+    background-color: #F2F2F2;
+}
+
+.portfolio-overview-div-box-3 {
+    font-size:xx-large;
+    text-align: center;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    background-color: #DFF2F0 !important;
+}
+
+.portfolio-overview-div-box-3 strong {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;                 
+}
+
+.top-div-in-portfolio-overview {
+    margin-top: auto;
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    font-size: x-large;
+    position: relative;
+    text-decoration: underline;
+}
+
+.portfolio-list-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+}
+
+.portfolio-table {
+    width: 80%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    background-color: #f8f9fa;
+    overflow: hidden;
+    text-align: center;
+    table-layout: fixed;
+}
+
+.table-wrapper {
+    max-height: 400px; 
+    height: 400px;
+    overflow-y: auto; 
+    width: 72%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.table-wrapper table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+}
+
+.portfolio-table th, .portfolio-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.portfolio-table th {
+    background-color: #CADDED;
+    color: #717DAB;
+    font-weight: bold;
+}
+
+.portfolio-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.portfolio-table tr:hover {
+    background-color: #ddd;
+}
+
+.no-stocks {
+    text-align: center;
+    font-size: larger;
+    font-weight: bold;
+    color: #555;
+    margin-top: -200px;
+}
+
+.bottom-div-in-portfolio-overview {
+    flex: 1;
+    display: flex;
+    justify-content: center;  
+    align-items: center;  
+    text-align: center;
+    font-size: xx-large;
+    height: 60%;
+}
+
+.text-green {
+    color: green;
+}
+.text-red {
+    color: red;
+}
+
+.sell-button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.sell-button:hover {
+    background-color: #c0392b;
+}
+
+.live-mode-title {
+    font-family: 'Cinzel', serif;
+    font-style: italic;
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-align: center;
+    color: #717DAB;
+    margin-top: 20px;
+    margin-bottom: -20px;
+}

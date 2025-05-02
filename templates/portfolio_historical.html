@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historical Stock Price Viewer</title>
+    <link rel="stylesheet" type="text/css" href="../static/css_reset.css">
+    <link rel="stylesheet" type="text/css" href="../static/portfolio_live.css">
+    <link rel="stylesheet" type="text/css" href="../static/portfolio_historical.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="title">
+            <strong>Stock Market Simulation Game</strong>
+          </div>
+        <div class="button-links">
+            <a href="{{ url_for('mode_select') }}" class="mode_select"><strong>Mode Select</strong></a>
+            <a href="{{ url_for('stock_search_h') }}" class="search-button"><strong>Search Stocks</strong></a>
+            <a href="{{ url_for('home') }}" class="log-out-button"><strong>Sign Out</strong></a>
+        </div>
+    </nav>
+
+    <h2 class="historical-mode-title">Historical Mode</h2>
+    <!-- ChatGPT helped me with this Next Day button -->
+    <div class="day-container">
+        <a href="{{ url_for('next_day') }}" class="next-day-button">
+            Next Day ➤
+        </a>
+        <span class="day-label">Day {{ day }}</span>
+    </div>
+
+    <div class="portfolio-overview-div">
+        <div class="portfolio-overview-div-box-1">
+            <div class="top-div-in-portfolio-overview">
+                <strong>Total Invested</strong>
+            </div>
+            <div class="bottom-div-in-portfolio-overview">
+                <span>${{ total_invested }}</span>
+            </div>
+        </div>
+
+        <div class="portfolio-overview-div-box-2">
+            <div class="top-div-in-portfolio-overview">
+                <strong>Percent Change</strong>
+            </div>
+            <div class="bottom-div-in-portfolio-overview">
+                <span class="{% if percent_change >= 0 %}text-green{% else %}text-red{% endif %}">
+                    {{ percent_change }}%
+                </span>
+                
+            </div>
+        </div>
+
+        <div class="portfolio-overview-div-box-3">
+            <strong>
+                <span class="line-1">Portfolio</span>
+                <span class="line-2">Overview</span>
+            </strong>
+        </div>
+
+        <div class="portfolio-overview-div-box-4">
+            <div class="top-div-in-portfolio-overview">
+                <strong>Total Value</strong>
+            </div>
+            <div class="bottom-div-in-portfolio-overview">
+                <span>${{ total_value }}</span>
+            </div>
+        </div>
+
+        <div class="portfolio-overview-div-box-5">
+            <div class="top-div-in-portfolio-overview">
+                <strong>Cash</strong>
+            </div>
+            <div class="bottom-div-in-portfolio-overview">
+                <span>${{ cash }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="portfolio-list-div">
+        {% if purchases %}
+        <div class="table-wrapper">
+        <table class="portfolio-table">
+            <tr>
+                <th>Ticker</th>
+                <th>Quantity</th>
+                <th>Purchase Price</th>
+                <th>Current Price</th>
+                <th>Purchase Date</th>
+                <th>Sell</th>
+            </tr>
+            {% for stock in purchases | reverse %}
+            <tr>
+                <td>{{ stock.ticker }}</td>
+                <td>{{ stock.quantity }}</td>
+                <td>${{ "%.2f"|format(stock.price_bought) }}</td>
+                <td>${{ "%.2f"|format(stock.current_price) }}</td>
+                <td>{{ stock.date.strftime('%m/%d/%Y').lstrip("0") }}</td>
+                <td>
+                    <button class="sell-button" onclick="sellStock('{{ stock.ticker }}', '{{ stock.quantity }}', '{{ stock.date.isoformat() }}')">Sell</button>
+                </td>
+
+            </tr>
+            {% endfor %}
+        </table>
+        </div>
+        {% else %}
+        <p class="no-stocks">No stocks purchased yet.</p>
+        {% endif %}
+    </div>
+
+</body>
+<!-- ChatGPT helped with this inline JavaScript -->
+<script>
+    function sellStock(ticker, quantity, date) {
+    let quantityToSell = prompt(`Enter the number of shares of ${ticker} to sell:`, quantity);
+    if (!quantityToSell || isNaN(quantityToSell) || quantityToSell <= 0) {
+        alert("Invalid quantity.");
+        return;
+    }
+
+    fetch('/sell_stock_h', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            ticker: ticker,
+            quantity: parseInt(quantityToSell),
+            date: date
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.success || data.error);
+        location.reload();
+    })
+    .catch(error => console.error('Error:', error));
+}
+</script>
+</html>
+
+
+

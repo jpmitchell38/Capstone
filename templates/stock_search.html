@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Search</title>
+    <link rel="stylesheet" type="text/css" href="../static/css_reset.css">
+    <link rel="stylesheet" type="text/css" href="../static/stock_search.css">
+    <link rel="stylesheet" type="text/css" href="../static/portfolio_live.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="title">
+            <strong>Stock Market Simulation Game</strong>
+          </div>
+        <div class="button-links">
+            <a href="{{ url_for('mode_select') }}" class="mode_select"><strong>Mode Select</strong></a>
+            <a href="{{ url_for('portfolio_live') }}" class="back-button"><strong>Portfolio</strong></a>
+            <a href="{{ url_for('home') }}" class="log-out-button"><strong>Sign Out</strong></a>
+        </div>
+    </nav>
+
+    <h2 class="live-mode-title">Live Market Mode</h2>
+
+    <div class="search-stock-div">
+        <div class="container">
+            <h1 class="title-search">Stock Information</h1>
+            <form action="/stock_search" method="get" class="search-form">
+                <input type="text" name="ticker" placeholder="Enter Stock Ticker" required>
+                <button type="submit">Get Stock Info</button>
+            </form>
+        </div>
+    
+            {% if ticker %}
+            <div class="stock-info-box">
+                {% if stock_price %}
+                    <p class="stock-price">Current Price: ${{ stock_price }}</p>
+                    {% if stock_chart_base64 %}
+                        <img src="data:image/png;base64,{{ stock_chart_base64 }}" alt="Stock Chart" class="stock-chart">
+                    {% else %}
+                        <p class="error-message">Could not generate stock chart.</p>
+                    {% endif %}
+
+                    <div class="trade-buttons">
+                        <form action="{{ url_for('buy_stock_route') }}" method="post">
+                            <input type="hidden" name="ticker" value="{{ ticker }}">
+                            
+                            <input type="number" name="quantity" min="1" value="1" required class="quantity-input">
+                    
+                            <button type="submit" class="buy-button">Buy</button>
+                        </form>
+                    </div>
+
+                    {% if message %}
+                        <p class="success-message">{{ message }}</p>
+                    {% elif error_message %}
+                        <p class="error-message">{{ error_message }}</p>
+                    {% endif %}
+                    
+
+                {% else %}
+                    {% if purchase_success %}
+                        <p class="success-message">{{ message }}</p>
+                    {% else %}
+                        <p class="error-message">Could not fetch stock price. Please enter a valid ticker symbol.</p>
+                    {% endif %}
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+    
+</body>
+</html>
+

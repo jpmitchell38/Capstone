@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mode Select</title>
+    <link rel="stylesheet" type="text/css" href="../static/css_reset.css">
+    <link rel="stylesheet" type="text/css" href="../static/mode_select.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="title">
+            <strong>Stock Market Simulation Game</strong>
+          </div>
+    </nav>
+
+    <div class="container-for-btns">
+        <div class="box">
+            <form action="{{ url_for('portfolio_historical') }}" method="get">
+                <button type="submit" class="btn"><strong>Historical Mode</strong></button>
+            </form>
+        </div>
+        <div class="box">
+            <form action="{{ url_for('portfolio_live') }}" method="get">
+                <button type="submit" class="btn"><strong>Live Market Mode</strong></button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

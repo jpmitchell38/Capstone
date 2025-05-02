@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="../static/css_reset.css">
+    <link rel="stylesheet" type="text/css" href="../static/register.css">
+</head>
+<body>
+<!-- User sign-up form -->
+    <nav class="navbar">
+      <div class="title">
+        <strong>Stock Market Simulation Game</strong>
+      </div>
+    </nav>
+
+    <div class="register-outer-border">
+        <div class="register-header">
+          <Strong>Sign Up</Strong>
+          <div class="underline"></div>
+        </div>
+    
+        <form action="{{ url_for('user_sign_up') }}" method="POST"> 
+    
+        <div class="register-text-box-E">Email</div>
+        <input type="email" name="email" class="register-input" placeholder="Enter your email" required>
+    
+        <div class="register-text-box-P">Password</div>
+        <input type="password" name="password" class="register-input" placeholder="Enter your password" required>
+
+        <div class="register-text-box-RP">Re-Enter Password</div>
+        <input type="password" name="re-password" class="register-input" placeholder="Re-Enter your password" required>
+    
+        <button type="submit" class="register-button">Sign Up</button>
+      </form>
+      <div class="underline2"></div>
+
+      {% if error_message %}
+          <div class="error-message" style="color: red;text-align: center;">
+              {{ error_message }}
+          </div>
+      {% endif %}
+    
+        <div class="register-bottom-link"> 
+          Already have an account?&nbsp;
+          <a href="{{ url_for('home') }}"><strong>Log In</strong></a>
+        </div>
+      </div>
+</body>
+</html>

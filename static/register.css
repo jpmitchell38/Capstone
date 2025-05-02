@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap');
+
+body {
+    background-image: url("images1.jfif");
+}
+
+.navbar {
+    height: 60px;
+    background-color: #CEE1F2;
+    box-shadow: 1px 1px 2px #333333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+    width: 50%;
+    font-family: 'Cinzel', serif;
+    color: #717DAB;
+}
+
+.register-outer-border {
+    /* border: 2px solid black; */
+    height: 500px;
+    width: 30%;
+    margin: 0 auto;
+    margin-top: 90px;
+    background-color: #CEE1F2;
+    box-shadow: 1px 1px 2px #333333;
+}
+
+.register-header {
+    /* border-bottom: 2px solid black; */
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+    position: relative;
+    padding-top: 30px;
+    padding-bottom: 25px;
+}
+
+.register-text-box-E, .register-text-box-P, .register-text-box-RP {
+    /* border: 2px solid green; */
+    height: 40px;
+    /* margin-top: 10px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+}
+
+.register-text-box-E {
+    margin-top: 15px;
+    font-weight: bolder;
+}
+
+.register-text-box-P {
+    margin-top: 15px;
+    font-weight: bolder;
+}
+
+.register-text-box-RP {
+    margin-top: 15px;
+    font-weight: bolder;
+}
+
+.register-input {
+    width: 70%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15%
+
+}
+
+.register-button {
+    width: 20%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin-top: 30px;
+    background-color: #8C9CBA;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.register-button:hover {
+    background-color: darkblue;
+}
+
+.register-bottom-link {
+    /* border: 2px solid orange; */
+    height: 40px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.underline {
+    width: 50%;
+    height: 2px;
+    background-color: black;
+    position: absolute;
+    bottom: 0;
+}
+
+.underline2 {
+    width: 50%; 
+    height: 2px;
+    background-color: black; 
+    margin: 10px auto; 
+    margin-top: 30px;
+}

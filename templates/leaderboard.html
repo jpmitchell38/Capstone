@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leaderboard</title>
+    <link rel="stylesheet" type="text/css" href="../static/css_reset.css">
+    <link rel="stylesheet" type="text/css" href="../static/portfolio_live.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="title">
+            <strong>Stock Market Simulation Game</strong>
+          </div>
+        <div class="button-links">
+            <a href="{{ url_for('mode_select') }}" class="mode_select"><strong>Mode Select</strong></a>
+            <a href="{{ url_for('portfolio_live') }}" class="back-button"><strong>Portfolio</strong></a>
+            <a href="{{ url_for('home') }}" class="log-out-button"><strong>Sign Out</strong></a>
+        </div>
+    </nav>
+
+    <div class="portfolio-list-div">
+        <div class="table-wrapper">
+            <table class="portfolio-table">
+                <tr>
+                    <th>Rank</th>
+                    <th>User</th>
+                    <th>Cash</th>
+                    <th>Live Stock Value</th>
+                    <th>Total Portfolio Value</th>
+                </tr>
+            {% for user in leaderboard %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ user.email }}</td>
+                <td>${{ user.cash }}</td>
+                <td>${{ user.live_value }}</td>
+                <td>${{ user.total_value }}</td>
+            </tr>
+            {% endfor %}
+            </table>
+        </div>
+    </div>
+</body>
+</html>
